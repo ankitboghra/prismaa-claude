@@ -6,17 +6,38 @@ import { cn } from "@/lib/utils";
  * A sentence explaining that PET shows metabolism and CT shows anatomy takes
  * most patients two readings. Three panels showing an outline, a set of hot
  * spots, and the two overlaid takes about two seconds. Inline SVG rather than
- * an image so it stays crisp, weighs nothing, and inherits the theme.
+ * a stock photo: it stays crisp, weighs nothing, inherits the theme, and
+ * — unlike a found photograph — never risks looking like an actual patient
+ * scan or misrepresenting a real anatomical finding.
+ *
+ * The silhouette is a proportioned front-facing figure (head, neck, sloped
+ * shoulders, tapered torso, arms held slightly away from the body, legs to
+ * the ankle) rather than a single abstract blob, so it reads as an
+ * anatomical diagram rather than a placeholder icon.
  */
 
-const TORSO_PATH =
-  "M60 14c-9 0-15 5-15 11 0 4 1 6 1 8-6 2-24 7-27 11-3 5-4 24-4 33 0 4 1 6 4 6h6c1 22 3 44 5 58 1 5 3 7 8 7h9c4 0 6-2 6-6l3-38h6l3 38c0 4 2 6 6 6h9c5 0 7-2 8-7 2-14 4-36 5-58h6c3 0 4-2 4-6 0-9-1-28-4-33-3-4-21-9-27-11 0-2 1-4 1-8 0-6-6-11-15-11Z";
+/** Shared body outline, built from a few smooth primitives rather than one
+ *  hand-drawn path — easier to keep proportioned and to reuse identically
+ *  across the CT and fused panels. */
+function BodySilhouette() {
+  return (
+    <g fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.5)" strokeWidth="1.1" strokeLinejoin="round">
+      <circle cx="60" cy="23" r="13.5" />
+      <path d="M52 33 h16 v9 h-16 Z" strokeWidth="0" />
+      <path d="M32 50c0-6.5 8-11 28-11s28 4.5 28 11l2 42c1 8-2.5 16-9 20l2 12H37l2-12c-6.5-4-10-12-9-20Z" />
+      <path d="M32 50c-9 4-16 12-18 28l-2 52c-.5 6 3.5 10 8.5 10s9-4 8.5-10l-2-50c1.5-14 4-24 9-30Z" />
+      <path d="M88 50c9 4 16 12 18 28l2 52c.5 6-3.5 10-8.5 10s-9-4-8.5-10l2-50c-1.5-14-4-24-9-30Z" />
+      <path d="M39 124h16l-3 25c-1 16-2 32-2 48 0 6-3.5 9-8 9s-8-3-8-9c0-1.5.2-3 .5-4.5L39 149Z" />
+      <path d="M81 124H65l3 25c1 16 2 32 2 48 0 6 3.5 9 8 9s8-3 8-9c0-1.5-.2-3-.5-4.5L81 149Z" />
+    </g>
+  );
+}
 
-/** Lesion positions, in the torso's own 120×150 coordinate space. */
+/** Positions for the "hot spot" glow, in the silhouette's own 120×210 space. */
 const LESIONS = [
-  { cx: 45, cy: 58, r: 7.5, intensity: 1 },
-  { cx: 72, cy: 74, r: 5, intensity: 0.8 },
-  { cx: 52, cy: 96, r: 3.6, intensity: 0.62 },
+  { cx: 60, cy: 62, r: 8.2, intensity: 1 },
+  { cx: 80, cy: 102, r: 5.4, intensity: 0.82 },
+  { cx: 46, cy: 146, r: 3.8, intensity: 0.62 },
 ];
 
 function Panel({
@@ -40,7 +61,7 @@ function Panel({
           tone === "fused" && "bg-ink-900 ring-teal-400/40",
         )}
       >
-        <svg viewBox="0 0 120 150" className="block w-full" aria-hidden>
+        <svg viewBox="0 0 120 210" className="block w-full" aria-hidden>
           {children}
         </svg>
         <span
@@ -86,15 +107,10 @@ export function ScanFusion({ className }: { className?: string }) {
         label="CT"
         caption="The CT scan maps your anatomy — every organ, in fine detail. But a lump and a scar can look identical."
       >
+        <BodySilhouette />
         <path
-          d={TORSO_PATH}
-          fill="rgba(255,255,255,0.07)"
-          stroke="rgba(255,255,255,0.45)"
-          strokeWidth="1.1"
-        />
-        <path
-          d="M38 62h44M38 78h44M38 94h44"
-          stroke="rgba(255,255,255,0.12)"
+          d="M22 68h76M22 100h76M22 132h76"
+          stroke="rgba(255,255,255,0.14)"
           strokeWidth="0.8"
         />
       </Panel>
@@ -120,12 +136,7 @@ export function ScanFusion({ className }: { className?: string }) {
         label="PET / CT"
         caption="Overlaid, your doctor sees exactly which structure is active — and that is what decides the treatment."
       >
-        <path
-          d={TORSO_PATH}
-          fill="rgba(255,255,255,0.07)"
-          stroke="rgba(255,255,255,0.45)"
-          strokeWidth="1.1"
-        />
+        <BodySilhouette />
         {LESIONS.map((lesion, index) => (
           <g key={index}>
             <circle

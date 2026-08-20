@@ -29,6 +29,44 @@ public/images/
 The path always starts with `/images/…` — that is the public URL, not the disk
 path.
 
+## Doctor portraits
+
+Save each photo as `public/images/team/<slug>.jpg`, using the exact slug
+below — it is the same id already used as that person's URL and React key in
+`src/data/team.ts`, so it doubles as a stable filename. Square portraits
+(1:1) work best; the site also accepts 4:5 if that's what you have.
+
+| Slug (filename) | Doctor |
+| --- | --- |
+| `dr-hemant-patel.jpg` | Dr. Hemant Patel |
+| `dr-keyur-mandaliya.jpg` | Dr. Keyur Mandaliya *(lead — 4:5 portrait, shown large on the homepage and /team)* |
+| `dr-gaurav-rawal.jpg` | Dr. Gaurav Rawal |
+| `dr-k-k-agrawal.jpg` | Dr. K. K. Agrawal |
+| `dr-manas-mayank.jpg` | Dr. Manas Mayank |
+| `dr-drushi-patel.jpg` | Dr. Drushi Patel |
+| `dr-shikha-khandelwal.jpg` | Dr. Shikha Khandelwal |
+| `dr-dhara-patel.jpg` | Dr. Dhara Patel |
+| `dr-shibiraj-patel.jpg` | Dr. Shibiraj Patel |
+| `dr-kalpesh-kaswala.jpg` | Dr. Kalpesh Kaswala |
+| `dr-bhargavi-raval.jpg` | Dr. Bhargavi Raval |
+| `dr-anokhi-patel.jpg` | Dr. Anokhi Patel |
+
+After saving a file, open `src/data/team.ts`, find the record with that
+`slug`, and add the `photo` field:
+
+```ts
+{
+  slug: "dr-hemant-patel",
+  name: "Dr. Hemant Patel",
+  // ...
+  photo: "/images/team/dr-hemant-patel.jpg",   // add this line
+},
+```
+
+The brand-monogram avatar (initials in a circle) disappears the moment
+`photo` is set — nothing else needs to change. Partial sets are fine; each
+doctor without a `photo` keeps the monogram until their portrait is added.
+
 ## Specifications
 
 - **Format**: JPEG for photographs. Next.js converts to WebP/AVIF automatically.

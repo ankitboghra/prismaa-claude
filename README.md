@@ -44,7 +44,7 @@ places: typed data files for structured content, and Markdown for articles.
 | --- | --- |
 | `site.ts` | **Start here.** Name, address, phone numbers, email, hours, socials, WhatsApp message. Used by the header, footer, contact page *and* the local-SEO structured data, so changing it here changes it everywhere. |
 | `services.ts` | Every scan offered. One record drives the homepage card, the modal, and the `/services/[slug]` page. Adding a service to this array creates its page automatically. |
-| `team.ts` | The 13-person team — clinical and management. |
+| `team.ts` | The 12-person team — clinical and management. |
 | `technology.ts` | uMI Vista specifications and the digital-vs-conventional comparison. |
 | `stats.ts` | The headline numbers (scans reported, team size, turnaround). |
 | `testimonials.ts` | YouTube patient testimonials and the Google rating. |
@@ -95,13 +95,13 @@ gather photography.
 
 These are marked `TODO(prismaa)` in the code:
 
-1. **Doctor portraits.** All 13 team members (names, roles and qualifications
+1. **Doctor portraits.** All 12 team members (names, roles and qualifications
    confirmed from the centre's own material) render a brand-monogram avatar
    until a photo is added. Drop a photo in `public/images/team/<slug>.jpg` and
-   set `photo` on the matching record in `src/data/team.ts` — see
-   `public/images/README.md`.
+   set `photo` on the matching record in `src/data/team.ts` — the exact
+   filename for each person is listed in `public/images/README.md`.
 2. **Confirm role titles for the wider team.** Only Dr. Keyur Mandaliya's title
-   was supplied in full; the other 12 records' `role` fields are a reasonable
+   was supplied in full; the other 11 records' `role` fields are a reasonable
    inference from each person's printed qualifications (e.g. "MD, DNB" →
    Consultant Radiologist). Confirm each one's exact designation.
 3. **Verify the map coordinates** in `src/data/site.ts` — the address and PIN

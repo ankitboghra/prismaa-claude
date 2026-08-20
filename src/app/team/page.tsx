@@ -154,27 +154,6 @@ export default function TeamPage() {
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
-
-              <section className="mt-11">
-                <h3 className="font-display text-xl font-bold text-ink-900">
-                  Education & qualifications
-                </h3>
-                <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                  {leadDoctor.education?.map((entry) => (
-                    <li
-                      key={entry.qualification}
-                      className="rounded-card border border-ink-100 bg-white p-4"
-                    >
-                      <p className="font-display text-[0.9375rem] font-bold text-ink-900">
-                        {entry.qualification}
-                      </p>
-                      <p className="mt-0.5 text-[0.8125rem] text-ink-600">
-                        {entry.institution}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </section>
             </div>
           </div>
         </Container>

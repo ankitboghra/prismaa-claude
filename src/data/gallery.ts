@@ -45,6 +45,7 @@ export const galleryItems: GalleryItem[] = [
       "The uMI Vista digital PET/CT — the only one of its kind in South Gujarat.",
     category: "scanner",
     featured: true,
+    src: "/images/gallery/umi-vista.jpg",
   },
   {
     id: "scan-room",
@@ -52,13 +53,15 @@ export const galleryItems: GalleryItem[] = [
     caption:
       "A wide, short bore and soft indirect lighting. Nothing closes over your face.",
     category: "scanner",
+    src: "/images/gallery/umi-vista-gantry.webp",
+    
   },
   {
     id: "control-console",
     alt: "PET/CT technologist at the acquisition console at Prismaa OncoImaging, Surat",
     caption:
       "Our technologists stay in contact with you through the whole acquisition.",
-    category: "scanner",
+    category: "scanner", 
   },
   {
     id: "reception",
@@ -66,6 +69,7 @@ export const galleryItems: GalleryItem[] = [
     caption: "Reception — registration, paperwork and insurance help in one place.",
     category: "interiors",
     featured: true,
+    src: "/images/gallery/entrance.webp",
   },
   {
     id: "waiting-lounge",
@@ -73,6 +77,7 @@ export const galleryItems: GalleryItem[] = [
     caption:
       "The waiting lounge, designed to feel like anything other than a hospital corridor.",
     category: "patient-areas",
+    src: "/images/gallery/waiting.jpg",
   },
   {
     id: "uptake-room",

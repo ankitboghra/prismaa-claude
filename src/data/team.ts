@@ -80,6 +80,7 @@ export const team: TeamMember[] = [
       "Indian Medical Association (IMA) – Surat Branch",
       "Indian Society of Head and Neck Radiology (ISHNR)",
     ],
+    photo: "/images/team/dr-keyur-mandaliya.jpg",
   },
   {
     slug: "dr-gaurav-rawal",
@@ -163,14 +164,6 @@ export const team: TeamMember[] = [
     role: "Management",
     qualifications: "Master in Management",
     focusAreas: ["Administration", "Coordination"],
-    group: "management",
-  },
-  {
-    slug: "dr-nidhi-mandaliya",
-    name: "Dr. Nidhi Mandaliya",
-    role: "Clinical Services",
-    qualifications: "MBBS, DCH",
-    focusAreas: ["Patient care", "Clinical coordination"],
     group: "management",
   },
 ];
