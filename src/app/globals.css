@@ -1,0 +1,451 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Prismaa OncoImaging — Design System
+   --------------------------------------------------------------------------
+   Derived directly from the brand mark: a prism arrowhead split into three
+   facets — cyan, amber, coral — beside a warm brown wordmark on cream.
+
+     • Brand (brown #8B4A13) — the wordmark colour, and the primary action
+                               colour. Warm, grounded, unmistakably Prismaa.
+     • Ink                   — a brown-tinted neutral scale for text and dark
+                               sections, so nothing on the page goes cold grey.
+     • Teal (#159FC0)        — the cyan facet. Carries "advanced technology".
+     • Amber (#F9B315)       — the amber facet. Highlights and what's coming.
+     • Coral (#EE3B33)       — the coral facet. Advanced molecular studies.
+     • Sand (#FDFAF4)        — the cream ground the logo sits on.
+
+   The three facet colours appear together only as the "spectrum" hairline and
+   gradient text — the signature, never the wallpaper.
+
+   Accessibility: body text is ink-700+ on sand-50 (>= 8:1). brand-600 on white
+   is 7.5:1, so it is safe for both buttons and small text.
+   ========================================================================== */
+
+@theme {
+  /* ---- Type ------------------------------------------------------------ */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  /* Poppins matches the geometric, single-storey "a" of the wordmark. */
+  --font-display: var(--font-poppins), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+
+  /* Mobile-first fluid display sizes. */
+  --text-display-sm: clamp(1.75rem, 1.35rem + 1.9vw, 2.5rem);
+  --text-display-sm--line-height: 1.15;
+  --text-display-sm--letter-spacing: -0.02em;
+  --text-display-md: clamp(2.1rem, 1.55rem + 2.7vw, 3.25rem);
+  --text-display-md--line-height: 1.1;
+  --text-display-md--letter-spacing: -0.025em;
+  --text-display-lg: clamp(2.4rem, 1.6rem + 3.9vw, 4.25rem);
+  --text-display-lg--line-height: 1.05;
+  --text-display-lg--letter-spacing: -0.03em;
+
+  /* ---- Ink (warm brown-tinted neutral) --------------------------------- */
+  --color-ink-50: #faf7f3;
+  --color-ink-100: #f0eae1;
+  --color-ink-200: #e1d7c9;
+  --color-ink-300: #c7b8a4;
+  --color-ink-400: #a59178;
+  --color-ink-500: #857058;
+  --color-ink-600: #6b5843;
+  --color-ink-700: #574636;
+  --color-ink-800: #3d3025;
+  --color-ink-900: #271d14;
+  --color-ink-950: #17100a;
+
+  /* ---- Brand brown (the wordmark colour, and every primary action) ----- */
+  --color-brand-50: #fdf7f0;
+  --color-brand-100: #f8ead9;
+  --color-brand-200: #efd2b2;
+  --color-brand-300: #e0b183;
+  --color-brand-400: #cb8b4e;
+  --color-brand-500: #b06a28;
+  --color-brand-600: #8b4a13;
+  --color-brand-700: #733c11;
+  --color-brand-800: #5c3010;
+  --color-brand-900: #4a2810;
+  --color-brand-950: #2a1507;
+
+  /* ---- Teal (the cyan facet — technology accent) ----------------------- */
+  --color-teal-50: #edfafd;
+  --color-teal-100: #d2f2fa;
+  --color-teal-200: #a6e5f3;
+  --color-teal-300: #6dd1e8;
+  --color-teal-400: #35b7d6;
+  --color-teal-500: #159fc0;
+  --color-teal-600: #0e80a0;
+  --color-teal-700: #106681;
+  --color-teal-800: #14556a;
+  --color-teal-900: #15475a;
+
+  /* ---- Amber (the amber facet — highlight / forthcoming) --------------- */
+  --color-amber-50: #fff9eb;
+  --color-amber-100: #feefc7;
+  --color-amber-200: #fddd8a;
+  --color-amber-300: #fcc64d;
+  --color-amber-400: #f9b315;
+  --color-amber-500: #e9950b;
+  --color-amber-600: #c97006;
+  --color-amber-700: #a55009;
+  --color-amber-800: #883f0e;
+  --color-amber-900: #73340f;
+
+  /* ---- Coral (the red facet — advanced molecular studies) -------------- */
+  --color-coral-50: #fef3f2;
+  --color-coral-100: #fee3e1;
+  --color-coral-200: #feccc8;
+  --color-coral-300: #fca9a2;
+  --color-coral-400: #f7776c;
+  --color-coral-500: #ee3b33;
+  --color-coral-600: #dc2a21;
+  --color-coral-700: #b91f18;
+  --color-coral-800: #991d18;
+  --color-coral-900: #7f1f1a;
+
+  /* ---- Sand (the cream the logo sits on) ------------------------------- */
+  --color-sand-50: #fdfaf4;
+  --color-sand-100: #f9f3e8;
+  --color-sand-200: #f1e7d6;
+  --color-sand-300: #e3d4bc;
+
+  /* ---- Semantic aliases ------------------------------------------------ */
+  --color-canvas: var(--color-sand-50);
+  --color-surface: #ffffff;
+  --color-hairline: var(--color-ink-100);
+
+  /* ---- Radii ------------------------------------------------------------ */
+  --radius-card: 1.125rem;
+  --radius-panel: 1.75rem;
+
+  /* ---- Elevation (warm-tinted — never neutral black) -------------------- */
+  --shadow-e1: 0 1px 2px 0 rgb(39 29 20 / 0.05), 0 1px 3px 0 rgb(39 29 20 / 0.07);
+  --shadow-e2: 0 2px 4px -1px rgb(39 29 20 / 0.06),
+    0 8px 20px -6px rgb(39 29 20 / 0.14);
+  --shadow-e3: 0 4px 8px -2px rgb(39 29 20 / 0.07),
+    0 20px 44px -12px rgb(39 29 20 / 0.2);
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-rise: rise 0.5s var(--ease-out-soft) both;
+  --animate-fade: fade 0.35s var(--ease-out-soft) both;
+  --animate-scale-in: scale-in 0.22s var(--ease-out-soft) both;
+  --animate-pulse-ring: pulse-ring 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+@layer base {
+  * {
+    border-color: var(--color-hairline);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Offset for the sticky header when jumping to an in-page anchor. */
+    scroll-padding-top: 5.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink-800);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Room for the fixed mobile action bar. */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink-900);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* The page is content-heavy; keep long-form measure readable. */
+  ::selection {
+    background: var(--color-brand-100);
+    color: var(--color-ink-900);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+/*
+ * Gradient text runs amber → coral only. Cyan is in the mark and in the 3px
+ * rule below, but interpolating cyan into amber across a large glyph passes
+ * through olive, and olive is not a brand colour.
+ */
+@utility text-spectrum {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-amber-300),
+    var(--color-amber-400) 34%,
+    var(--color-amber-500) 62%,
+    var(--color-coral-500)
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+/* The prism signature: a 3px spectrum rule. */
+@utility rule-spectrum {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-teal-400),
+    var(--color-teal-500) 26%,
+    var(--color-amber-400) 64%,
+    var(--color-coral-500)
+  );
+}
+
+/* Faint isotope-decay grid used behind dark sections. */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@utility bg-grid-light {
+  background-image:
+    linear-gradient(to right, rgb(39 29 20 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(39 29 20 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Horizontal snap rails — the mobile pattern for card rows. */
+@utility snap-rail {
+  display: flex;
+  gap: 0.875rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 1.25rem;
+  padding-inline: 1.25rem;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+@utility snap-rail-item {
+  scroll-snap-align: start;
+  flex: 0 0 min(82vw, 20rem);
+}
+
+.snap-rail::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================================================
+   Long-form article typography (blog + patient education)
+   ========================================================================== */
+
+.prose-prismaa {
+  color: var(--color-ink-700);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.prose-prismaa > * + * {
+  margin-top: 1.15em;
+}
+
+.prose-prismaa h2 {
+  margin-top: 2.25em;
+  margin-bottom: 0.6em;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  scroll-margin-top: 6rem;
+}
+
+.prose-prismaa h3 {
+  margin-top: 1.9em;
+  margin-bottom: 0.45em;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  scroll-margin-top: 6rem;
+}
+
+.prose-prismaa h2 + h3 {
+  margin-top: 1em;
+}
+
+.prose-prismaa a {
+  color: var(--color-brand-700);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-brand-200);
+}
+
+.prose-prismaa a:hover {
+  text-decoration-color: var(--color-brand-600);
+}
+
+.prose-prismaa strong {
+  color: var(--color-ink-900);
+  font-weight: 650;
+}
+
+.prose-prismaa ul,
+.prose-prismaa ol {
+  padding-left: 1.35em;
+}
+
+.prose-prismaa ul {
+  list-style: disc;
+}
+
+.prose-prismaa ol {
+  list-style: decimal;
+}
+
+.prose-prismaa li + li {
+  margin-top: 0.4em;
+}
+
+.prose-prismaa li::marker {
+  color: var(--color-brand-400);
+}
+
+.prose-prismaa blockquote {
+  border-left: 3px solid var(--color-brand-300);
+  padding: 0.35rem 0 0.35rem 1.15rem;
+  color: var(--color-ink-600);
+  font-style: italic;
+}
+
+.prose-prismaa hr {
+  margin: 2.5em 0;
+  border: 0;
+  height: 1px;
+  background: var(--color-ink-100);
+}
+
+.prose-prismaa code {
+  background: var(--color-ink-50);
+  border: 1px solid var(--color-ink-100);
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+  font-size: 0.875em;
+}
+
+.prose-prismaa pre {
+  background: var(--color-ink-950);
+  color: var(--color-ink-100);
+  border-radius: var(--radius-card);
+  padding: 1.15rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.prose-prismaa pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+.prose-prismaa table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose-prismaa th,
+.prose-prismaa td {
+  border: 1px solid var(--color-ink-100);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose-prismaa th {
+  background: var(--color-ink-50);
+  color: var(--color-ink-900);
+  font-weight: 650;
+}
+
+/* Anchor links injected by rehype-slug for headings. */
+.prose-prismaa :is(h2, h3) > a[href^="#"] {
+  color: inherit;
+  text-decoration: none;
+}
